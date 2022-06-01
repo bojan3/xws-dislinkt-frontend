@@ -1,0 +1,12 @@
+/* mat-card{
+    background-color: white;
+} */
+.title{
+    margin-bottom: 20px;
+}
+
+.login-card{
+    max-width: fit-content;
+    padding: 50px;
+    margin: auto;
+}

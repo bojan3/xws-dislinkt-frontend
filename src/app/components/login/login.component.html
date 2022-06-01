@@ -1,0 +1,23 @@
+<mat-card class="login-card">
+    <mat-card-title class="title">{{title}}</mat-card-title>
+    <mat-card-content>
+        <form>
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password">
+                    <mat-hint>minimum 6 charachters</mat-hint>
+                </mat-form-field>
+            </p>
+        </form>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-raised-button color="primary">Submit</button>
+    </mat-card-actions>
+</mat-card>
