@@ -1,1 +1,89 @@
-<p>create-account works!</p>
+<div class="signup">
+    <mat-card class="signup-card">
+        <mat-card-title class="title">{{title}}</mat-card-title>
+        <mat-card-content>
+            <form>
+                <div class="block">
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Username</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput type="password">
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>E-mail</mat-label>
+                            <input matInput placeholder="name@mail.com">
+                        </mat-form-field>
+                    </p>
+                </div>
+                <div class="block">
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Phone number</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Gender</mat-label>
+                            <mat-select>
+                                <mat-option [value]=0>
+                                    Male
+                                </mat-option>
+                                <mat-option [value]=1>
+                                    Female
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Biography</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </p>
+                </div>
+                <div class="block">
+                    <p>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Account privacy</mat-label>
+                            <mat-select>
+                                <mat-option [value]=0>
+                                    Public
+                                </mat-option>
+                                <mat-option [value]=1>
+                                    Private
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Job</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Education</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </p>
+                </div>
+            </form>
+
+            <a [routerLink]="['/']">Already have an account? Login</a>
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-raised-button color="primary">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

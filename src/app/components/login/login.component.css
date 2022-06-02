@@ -1,12 +1,26 @@
-/* mat-card{
-    background-color: white;
-} */
-.title{
+.title {
     margin-bottom: 20px;
 }
 
-.login-card{
+.login-card {
     max-width: fit-content;
     padding: 50px;
     margin: auto;
+}
+
+.login {
+    margin: 100px;
+}
+
+::ng-deep.special-date {
+    background-color: rgba(255, 0, 0, 0.547);
+    border-radius: 100%;
+}
+
+a:visited {
+    color: pink;
+}
+
+a {
+    color: pink;
 }

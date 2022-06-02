@@ -11,12 +11,25 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { HeaderComponent } from './components/header/header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule, Routes } from '@angular/router';
+import { MatRadioModule } from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+
+const appRoutes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'createAccount', component: CreateAccountComponent },
+]
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +39,13 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatToolbarModule,
+    RouterModule.forRoot(appRoutes),
+    MatRadioModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
