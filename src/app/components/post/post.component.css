@@ -1,0 +1,13 @@
+.title {
+    margin-bottom: 20px;
+}
+
+.post-card {
+    max-width: fit-content;
+    padding: 50px;
+    margin: auto;
+}
+
+.blank{
+    margin: 20px;
+}

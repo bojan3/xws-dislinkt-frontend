@@ -17,11 +17,24 @@ import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule, Routes } from '@angular/router';
 import { MatRadioModule } from '@angular/material/radio';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProfilesPageComponent } from './components/profiles-page/profiles-page.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './interceptor/TokenInterceptor';
+import { AccountService } from './services/account.service';
+import { ApiService } from './services/api.service';
+import { AuthService } from './services/auth.service';
+import { ProfilePostsComponent } from './components/profile-posts/profile-posts.component';
+import { PostComponent } from './components/post/post.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'createAccount', component: CreateAccountComponent },
+  { path: 'publicProfiles', component: ProfilesPageComponent },
+  { path: 'profilePosts/:id', component: ProfilePostsComponent }
 ]
 
 @NgModule({
@@ -29,12 +42,19 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     CreateAccountComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProfileComponent,
+    ProfilesPageComponent,
+    ProfilePostsComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -45,9 +65,18 @@ const appRoutes: Routes = [
     MatToolbarModule,
     RouterModule.forRoot(appRoutes),
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  },
+    AccountService,
+    AuthService,
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
