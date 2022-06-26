@@ -18,6 +18,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule, Routes } from '@angular/router';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
+import { PostComponent } from './components/post/post.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProfilePostsComponent } from './components/profile-posts/profile-posts.component';
+import { ProfilesPageComponent } from './components/profiles-page/profiles-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -29,7 +33,11 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     CreateAccountComponent,
-    HeaderComponent
+    HeaderComponent,
+    PostComponent,
+    ProfileComponent,
+    ProfilePostsComponent,
+    ProfilesPageComponent
   ],
   imports: [
     BrowserModule,
