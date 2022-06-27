@@ -2,6 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Account } from '../entity/Account';
 import { ApiService } from './api.service';
 
@@ -19,7 +20,7 @@ export class AccountService {
   }
 
   getMyInfo() {
-    return this.apiService.get(this.basePath)
+    return this.apiService.get(this.basePath + localStorage.getItem(environment.tokenName))
       .pipe(map(user => {
         this.currentUser = user;
         return user;
@@ -39,8 +40,8 @@ export class AccountService {
     return this.apiService.get(this.basePath + 'GetAllAccounts');
   }
 
-  signUp(user: any) {
-    return this.apiService.post(this.basePath + 'CreateAccount', user);
+  isLogged() {
+    return !!this.currentUser;
   }
 
 }

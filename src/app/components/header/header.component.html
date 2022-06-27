@@ -7,10 +7,10 @@
                 <mat-icon>menu</mat-icon>
             </button>
             <mat-menu #beforeMenu="matMenu" xPosition="before">
-                <button [routerLink]='["/"]' mat-menu-item>Login</button>
-                <button [routerLink]='["createAccount"]' mat-menu-item>Create account</button>
+                <button [routerLink]='["/"]' *ngIf="!accountService.isLogged()" mat-menu-item>Login</button>
+                <button [routerLink]='["createAccount"]' *ngIf="!accountService.isLogged()" mat-menu-item>Create account</button>
                 <button [routerLink]='["publicProfiles"]' mat-menu-item>Show public profiles</button>
-                <button mat-menu-item>Logout</button>
+                <button *ngIf="accountService.isLogged()" (click)="logout()" mat-menu-item>Logout</button>
             </mat-menu>
         </mat-toolbar-row>
     </mat-toolbar>

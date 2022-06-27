@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AccountService } from 'src/app/services/account.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-create-account',
@@ -13,7 +14,8 @@ export class CreateAccountComponent implements OnInit {
   form!: FormGroup;
 
   constructor(private accountService: AccountService, 
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -31,7 +33,7 @@ export class CreateAccountComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form.value);
-    this.accountService.signUp(this.form.value).subscribe((res) => {
+    this.authService.signup(this.form.value).subscribe((res) => {
       console.log(res);
     })
   } 

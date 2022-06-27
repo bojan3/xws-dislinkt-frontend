@@ -5,13 +5,14 @@ import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { map } from 'rxjs/operators';
 import { AccountService } from './account.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private tokenName: string = "jwt";
+  basePath = 'https://localhost:5002/account/';
 
   constructor(
     private accountService: AccountService,
@@ -21,21 +22,14 @@ export class AuthService {
   ) { }
 
   login(user: any) {
-    const loginHeaders = new HttpHeaders({
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    });
+    console.log(this.basePath + user.username + ", " + user.password);
 
-    const body = {
-      'username': user.username,
-      'password': user.password
-    };
-
-    return this.apiService.post("http://localhost:8081/auth/login", JSON.stringify(body), loginHeaders)
+    return this.apiService.get(this.basePath + user.username + ", " + user.password)
       .pipe(map((res) => {
         console.log('Login success');
-        localStorage.setItem(this.tokenName, res.body.accessToken);
+        localStorage.setItem(environment.tokenName, res.id);
       }));
+
   }
 
   signup(user: any) {
@@ -44,7 +38,7 @@ export class AuthService {
       'Content-Type': 'application/json'
     });
 
-    return this.apiService.post("http://localhost:8081/auth/signup", JSON.stringify(user), signupHeaders)
+    return this.apiService.post(this.basePath + 'CreateAccount', user, signupHeaders)
       .pipe(map(() => {
         console.log('Sign up success');
       }));
@@ -52,16 +46,16 @@ export class AuthService {
 
   logout() {
     this.accountService.currentUser = null;
-    localStorage.removeItem(this.tokenName);
-    this.router.navigate(['/logIn']);
+    localStorage.removeItem(environment.tokenName);
+    this.router.navigate(['/']);
   }
 
   tokenIsPresent() {
-    var token = localStorage.getItem(this.tokenName);
+    var token = localStorage.getItem(environment.tokenName);
     return token != undefined && token != null;
   }
 
   getToken() {
-    return localStorage.getItem(this.tokenName)
+    return localStorage.getItem(environment.tokenName)
   }
 }

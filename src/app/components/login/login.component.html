@@ -2,30 +2,24 @@
     <mat-card class="login-card">
         <mat-card-title class="title">{{title}}</mat-card-title>
         <mat-card-content>
-            <form>
+            <form #loginForm="ngForm" [formGroup]="form">
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Username</mat-label>
-                        <input matInput>
+                        <input matInput formControlName="username">
                     </mat-form-field>
                 </p>
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input matInput type="password">
+                        <input matInput formControlName="password" type="password">
                     </mat-form-field>
                 </p>
                 <a [routerLink] = "['/createAccount']">Don't have an account? Sign Up</a>
             </form>
         </mat-card-content>
         <mat-card-actions align="end">
-            <button mat-raised-button color="primary">Submit</button>
+            <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!loginForm.form.valid">Submit</button>
         </mat-card-actions>
     </mat-card>
 </div>
-
-
-<!-- <mat-card class="demo-inline-calendar-card">
-    <mat-calendar [dateClass]="dateClass()"></mat-calendar>
-</mat-card>
-<p>Selected date: {{selected}}</p> -->

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
+import { FormBuilder, FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AccountService } from 'src/app/services/account.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,22 +12,27 @@ import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 export class LoginComponent implements OnInit {
 
   title: string = 'Login';
-  selected: Date = new Date("2022-06-03");
+  form!: FormGroup;
 
-  constructor() { }
+  constructor(private formBuilder: UntypedFormBuilder,
+    private accountService: AccountService,
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      username: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(32)])]
+    });
   }
 
-  /*dateClass() {
-    return (date: Date): MatCalendarCellCssClasses => {
-      console.log(date.toDateString());
-      if (date.getDate() === 1 || date.getDate() === 15) {
-        return 'special-date';
-      } else {
-        return '';
-      }
-    };
-  }*/
+  onSubmit() {    
+    this.authService.login(this.form.value).subscribe((token) => {
+      this.accountService.getMyInfo().subscribe((res) => {
+        this.router.navigate(['/publicProfiles']);
+      })
+    }
+    );
+  }
 
 }
