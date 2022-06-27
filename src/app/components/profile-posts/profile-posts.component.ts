@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Account } from 'src/app/entity/Account';
+import { Post } from 'src/app/entity/Post';
 import { AccountService } from 'src/app/services/account.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-profile-posts',
@@ -9,13 +12,15 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class ProfilePostsComponent implements OnInit {
 
-  accounts: Account[] = [];
-  constructor(private accountService: AccountService) { }
+  posts: Post[] = [];
+  constructor(private route: ActivatedRoute, private postService: PostService) { }
 
   ngOnInit(): void {
-    this.accountService.getAllPublicAccounts().subscribe((accounts) => {
-      this.accounts = accounts;
-      console.log(this.accounts);
+    this.route.params.subscribe((param) => {
+      this.postService.getPostsByAccount(param.id).subscribe((posts) => {
+        this.posts = posts;
+        console.log(posts);
+      })
     })
   }
 

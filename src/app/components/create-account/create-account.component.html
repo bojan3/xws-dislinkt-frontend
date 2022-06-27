@@ -2,24 +2,24 @@
     <mat-card class="signup-card">
         <mat-card-title class="title">{{title}}</mat-card-title>
         <mat-card-content>
-            <form>
+            <form [formGroup]="form">
                 <div class="block">
                     <p>
                         <mat-form-field appearance="outline">
                             <mat-label>Username</mat-label>
-                            <input matInput>
+                            <input matInput formControlName="username">
                         </mat-form-field>
                     </p>
                     <p>
                         <mat-form-field appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input matInput type="password">
+                            <input matInput type="password" formControlName="password">
                         </mat-form-field>
                     </p>
                     <p>
                         <mat-form-field appearance="outline">
                             <mat-label>E-mail</mat-label>
-                            <input matInput placeholder="name@mail.com">
+                            <input matInput placeholder="name@mail.com" formControlName="email">
                         </mat-form-field>
                     </p>
                 </div>
@@ -27,13 +27,13 @@
                     <p>
                         <mat-form-field appearance="outline">
                             <mat-label>Phone number</mat-label>
-                            <input matInput>
+                            <input matInput formControlName="phoneNumber">
                         </mat-form-field>
                     </p>
                     <p>
                         <mat-form-field appearance="fill">
                             <mat-label>Gender</mat-label>
-                            <mat-select>
+                            <mat-select formControlName="gender">
                                 <mat-option [value]=0>
                                     Male
                                 </mat-option>
@@ -46,7 +46,7 @@
                     <p>
                         <mat-form-field appearance="outline">
                             <mat-label>Biography</mat-label>
-                            <input matInput>
+                            <input matInput formControlName="biography">
                         </mat-form-field>
                     </p>
                 </div>
@@ -54,11 +54,11 @@
                     <p>
                         <mat-form-field appearance="fill">
                             <mat-label>Account privacy</mat-label>
-                            <mat-select>
-                                <mat-option [value]=0>
+                            <mat-select formControlName="isPublic">
+                                <mat-option [value]=true>
                                     Public
                                 </mat-option>
-                                <mat-option [value]=1>
+                                <mat-option [value]=false>
                                     Private
                                 </mat-option>
                             </mat-select>
@@ -67,13 +67,13 @@
                     <p>
                         <mat-form-field appearance="outline">
                             <mat-label>Job</mat-label>
-                            <input matInput>
+                            <input matInput formControlName="job">
                         </mat-form-field>
                     </p>
                     <p>
                         <mat-form-field appearance="outline">
                             <mat-label>Education</mat-label>
-                            <input matInput>
+                            <input matInput formControlName="education">
                         </mat-form-field>
                     </p>
                 </div>
@@ -83,7 +83,7 @@
 
         </mat-card-content>
         <mat-card-actions align="end">
-            <button mat-raised-button color="primary">Submit</button>
+            <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
         </mat-card-actions>
     </mat-card>
 </div>

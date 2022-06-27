@@ -3,9 +3,15 @@
         <mat-toolbar-row>
             <span>Dislinkt</span>
             <span class="example-spacer"></span>
-            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+            <button [matMenuTriggerFor]="beforeMenu" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
                 <mat-icon>menu</mat-icon>
             </button>
+            <mat-menu #beforeMenu="matMenu" xPosition="before">
+                <button [routerLink]='["/"]' mat-menu-item>Login</button>
+                <button [routerLink]='["createAccount"]' mat-menu-item>Create account</button>
+                <button [routerLink]='["publicProfiles"]' mat-menu-item>Show public profiles</button>
+                <button mat-menu-item>Logout</button>
+            </mat-menu>
         </mat-toolbar-row>
     </mat-toolbar>
 </p>
