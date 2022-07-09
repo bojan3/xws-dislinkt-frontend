@@ -6,6 +6,7 @@ import { ApiService } from './api.service';
 import { map } from 'rxjs/operators';
 import { AccountService } from './account.service';
 import { environment } from 'src/environments/environment';
+import { AuthenticateRequest } from '../entity/AuthenticateRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -17,17 +18,16 @@ export class AuthService {
   constructor(
     private accountService: AccountService,
     private router: Router,
-    private http: HttpClient,
     private apiService: ApiService
   ) { }
 
-  login(user: any) {
+  login(user: AuthenticateRequest) {
     console.log(this.basePath + user.username + ", " + user.password);
 
-    return this.apiService.get(this.basePath + user.username + ", " + user.password)
+    return this.apiService.post(this.basePath + 'login', user)
       .pipe(map((res) => {
-        console.log('Login success');
-        localStorage.setItem(environment.tokenName, res.id);
+        console.log('Login success', res.body);
+        localStorage.setItem(environment.tokenName, res.body);
       }));
 
   }

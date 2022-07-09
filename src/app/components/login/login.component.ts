@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthenticateRequest } from 'src/app/entity/AuthenticateRequest';
 import { AccountService } from 'src/app/services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -26,8 +27,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {    
-    this.authService.login(this.form.value).subscribe((token) => {
+  onSubmit() {  
+    var user = new AuthenticateRequest(this.form.value.username, this.form.value.password);  
+    this.authService.login(user).subscribe((token) => {
       this.accountService.getMyInfo().subscribe((res) => {
         this.router.navigate(['/publicProfiles']);
       })
