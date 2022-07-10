@@ -20,7 +20,7 @@ export class AccountService {
   }
 
   getMyInfo() {
-    return this.apiService.get(this.basePath + localStorage.getItem(environment.tokenName))
+    return this.apiService.get(this.basePath + localStorage.getItem(environment.id))
       .pipe(map(user => {
         this.currentUser = user;
         return user;

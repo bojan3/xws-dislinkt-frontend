@@ -17,7 +17,6 @@ export class AuthService {
 
   constructor(
     private accountService: AccountService,
-    private router: Router,
     private apiService: ApiService
   ) { }
 
@@ -27,7 +26,8 @@ export class AuthService {
     return this.apiService.post(this.basePath + 'login', user)
       .pipe(map((res) => {
         console.log('Login success', res.body);
-        localStorage.setItem(environment.tokenName, res.body);
+        localStorage.setItem("accountId", res.body.id);
+        localStorage.setItem(environment.tokenName, res.body.token);
       }));
 
   }
@@ -45,9 +45,7 @@ export class AuthService {
   }
 
   logout() {
-    this.accountService.currentUser = null;
-    localStorage.removeItem(environment.tokenName);
-    this.router.navigate(['/']);
+    return this.apiService.delete(this.basePath + "Logout")
   }
 
   tokenIsPresent() {
