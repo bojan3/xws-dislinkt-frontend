@@ -29,12 +29,14 @@ import { AuthService } from './services/auth.service';
 import { ProfilePostsComponent } from './components/profile-posts/profile-posts.component';
 import { PostComponent } from './components/post/post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './components/signup/signup.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'createAccount', component: CreateAccountComponent },
   { path: 'publicProfiles', component: ProfilesPageComponent },
-  { path: 'profilePosts/:id', component: ProfilePostsComponent }
+  { path: 'profilePosts/:id', component: ProfilePostsComponent },
+  { path: 'updateProfile', component: SignupComponent }
 ]
 
 @NgModule({
@@ -46,7 +48,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     ProfilesPageComponent,
     ProfilePostsComponent,
-    PostComponent
+    PostComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

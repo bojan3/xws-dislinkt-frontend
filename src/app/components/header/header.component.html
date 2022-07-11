@@ -10,6 +10,7 @@
                 <button [routerLink]='["/"]' *ngIf="!accountService.isLogged()" mat-menu-item>Login</button>
                 <button [routerLink]='["createAccount"]' *ngIf="!accountService.isLogged()" mat-menu-item>Create account</button>
                 <button [routerLink]='["publicProfiles"]' mat-menu-item>Show public profiles</button>
+                <button *ngIf="accountService.isLogged()" [routerLink]='["updateProfile"]' mat-menu-item>Update profile</button>
                 <button *ngIf="accountService.isLogged()" (click)="logout()" mat-menu-item>Logout</button>
             </mat-menu>
         </mat-toolbar-row>
