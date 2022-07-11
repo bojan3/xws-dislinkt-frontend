@@ -29,12 +29,16 @@ import { AuthService } from './services/auth.service';
 import { ProfilePostsComponent } from './components/profile-posts/profile-posts.component';
 import { PostComponent } from './components/post/post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { CreatePostDialogComponent } from './components/create-post-dialog/create-post-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog'; 
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'createAccount', component: CreateAccountComponent },
   { path: 'publicProfiles', component: ProfilesPageComponent },
-  { path: 'profilePosts/:id', component: ProfilePostsComponent }
+  { path: 'profilePosts/:id', component: ProfilePostsComponent },
+  { path: 'myProfile', component: MyProfileComponent }
 ]
 
 @NgModule({
@@ -46,7 +50,9 @@ const appRoutes: Routes = [
     ProfileComponent,
     ProfilesPageComponent,
     ProfilePostsComponent,
-    PostComponent
+    PostComponent,
+    MyProfileComponent,
+    CreatePostDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +72,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MatRadioModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

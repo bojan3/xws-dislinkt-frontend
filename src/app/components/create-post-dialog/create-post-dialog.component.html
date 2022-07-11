@@ -1,0 +1,11 @@
+<mat-dialog-content class="mat-typography">
+    <mat-card-title>Write something</mat-card-title>
+    <mat-card>
+        <mat-card-content>
+            <textarea [(ngModel)]="text"></textarea>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-raised-button color="success" (click)="onSubmit()">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</mat-dialog-content>

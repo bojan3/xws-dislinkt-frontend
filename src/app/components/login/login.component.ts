@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     var user = new AuthenticateRequest(this.form.value.username, this.form.value.password);  
     this.authService.login(user).subscribe((token) => {
       this.accountService.getMyInfo().subscribe((res) => {
-        this.router.navigate(['/publicProfiles']);
+        this.router.navigate(['/myProfile']);
       })
     }
     );
