@@ -29,11 +29,12 @@ export class AccountService {
 
   updateAccount(account: any) {
     console.log("updating account...");
+    console.log(account);
     const headers = new HttpHeaders({
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     });
-    return this.apiService.post("http://localhost:8081/api/account/update", JSON.stringify(account), headers);
+    return this.apiService.post(this.basePath+'UpdateAccount', account, headers);
   }
 
   getAllPublicAccounts(): Observable<Account[]> {

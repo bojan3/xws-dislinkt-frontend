@@ -1,1 +1,76 @@
-<p>signup works!</p>
+<div class="signup">
+  <mat-card class="signup-card">
+      <mat-card-title class="title">{{title}}</mat-card-title>
+      <mat-card-content>
+          <form [formGroup]="form">
+              <div class="block">
+                  <p>
+                      <mat-form-field appearance="outline">
+                          <mat-label>Username</mat-label>
+                          <input [(ngModel)]="account.username" matInput formControlName="username">
+                      </mat-form-field>
+                  </p>
+                  <p>
+                      <mat-form-field appearance="outline">
+                          <mat-label>Password</mat-label>
+                          <input [(ngModel)]="account.email" matInput type="password" formControlName="password">
+                      </mat-form-field>
+                  </p>
+                  <p>
+                      <mat-form-field appearance="outline">
+                          <mat-label>E-mail</mat-label>
+                          <input [(ngModel)]="account.email" matInput placeholder="name@mail.com" formControlName="email">
+                      </mat-form-field>
+                  </p>
+              </div>
+              <div class="block">
+                  <p>
+                      <mat-form-field appearance="outline">
+                          <mat-label>Phone number</mat-label>
+                          <input [(ngModel)]="account.phoneNumber" matInput formControlName="phoneNumber">
+                      </mat-form-field>
+                  </p>
+                  <p>
+                      <mat-form-field appearance="outline">
+                          <mat-label>Biography</mat-label>
+                          <input [(ngModel)]="account.biography" matInput formControlName="biography">
+                      </mat-form-field>
+                  </p>
+              </div>
+              <div class="block">
+                  <!-- <p>
+                      <mat-form-field appearance="fill">
+                          <mat-label>Account privacy</mat-label>
+                          <mat-select [(value)]="selected" formControlName="isPublic">
+                              <mat-option [value]=true>
+                                  Public
+                              </mat-option>
+                              <mat-option [value]=false>
+                                  Private
+                              </mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                  </p> -->
+                  <p>
+                      <mat-form-field appearance="outline">
+                          <mat-label>Job</mat-label>
+                          <input matInput formControlName="job">
+                      </mat-form-field>
+                  </p>
+                  <p>
+                      <mat-form-field appearance="outline">
+                          <mat-label>Education</mat-label>
+                          <input [(ngModel)]="account.education" matInput formControlName="education">
+                      </mat-form-field>
+                  </p>
+              </div>
+          </form>
+
+          <a [routerLink]="['/']">Already have an account? Login</a>
+
+      </mat-card-content>
+      <mat-card-actions align="end">
+          <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+      </mat-card-actions>
+  </mat-card>
+</div>

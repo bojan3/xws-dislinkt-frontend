@@ -1,0 +1,31 @@
+.title {
+  margin-bottom: 20px;
+}
+
+.signup-card {
+  max-width: fit-content;
+  padding: 50px;
+  margin: auto;
+}
+
+.signup{
+  margin-top: 100px;
+}
+
+::ng-deep.special-date {
+  background-color: rgba(255, 0, 0, 0.547);
+  border-radius: 100%;
+}
+
+a:visited {
+  color: pink;
+}
+
+a {
+  color: pink;
+}
+
+.block{
+  display: inline-block;
+  margin: 10px;
+}
